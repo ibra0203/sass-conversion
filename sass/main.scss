@@ -1,0 +1,243 @@
+@import "variables";
+@import "mixins";
+:root{
+    --width: 400px;
+    --fH2: 1.999rem;
+    --c1H3: 1.999rem;
+    --c2H3: 1.999rem;
+    --c2H4: 1.999rem;
+    --c2P: 1.414rem;
+    --c2Li: 1.414rem;
+    --fP: 1rem;
+    --hA: 1.414rem;
+}
+*{
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    &:after,
+    &:before {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+    }
+}
+html {font-size: 16px;
+    font-family: $font-sans;
+    line-height: 1.6;}
+h1,
+h2,
+h3,
+h4 {font-family: $font-serif;}
+ul {list-style: none;}
+
+/***********************************************
+                SPECIAL
+***********************************************/
+.row {clear: both;}
+
+.clearfix:after {display: table;
+    @extend .row;
+    content: "";}
+
+.colDarkGrey{color: $col-dark-grey;}
+
+/***********************************************
+                LAYOUT
+***********************************************/
+
+.bg-header {
+    background-color: $col-white;
+    background-color: $col-light-blue;
+    @extend .colDarkGrey;
+    border-bottom: 1rem solid $col-med-blue;
+    border-top: 1rem solid $col-dark-blue;
+    position: relative;
+    
+    &:before, &:after {
+    content: "";
+    position: absolute;
+    bottom: -1rem;
+    width: 30%;
+    height: 1rem;
+    background-color: $col-dark-blue;
+    }
+    &:before {
+    left: 0;
+    }   
+    &:after {
+     right: 0;
+    }
+}
+.bg-focal {
+    background-color: $col-light-brown;
+    color: $col-dark-brown;
+}
+.bg-content1 {
+    background-color: $col-white;
+    @extend .colDarkGrey;
+}
+.bg-content2 {
+    background-color: $col-light-blue;
+    color: $col-dark-blue;
+}
+.bg-footer {
+    background-color: $col-white;
+    @extend .colDarkGrey;
+}
+
+header {
+    width: var(--width);
+    margin: 0 auto;
+    position: relative;
+    &>nav, &>nav > ul li, &>h1 {
+    width: 100%;
+    }
+    &>nav > ul li {
+    float: none;
+    }
+    &>h1{ 
+        padding: 0 2rem;
+        color: $col-dark-brown;
+    letter-spacing: 0.1rem;
+    }
+}
+section.focal, 
+    section.content1,
+    section.content2,
+    footer{
+    width: var(--width);
+    margin: 0 auto;
+}
+section.content1, section.content2 {
+    padding: 2rem 0;
+}
+.col-2 {
+    @include equalSpaced(2, 0%);
+    padding-bottom: 2rem;
+    border-left: 1px solid $col-dark-blue;
+    margin-bottom: 2rem;
+}
+footer .col-2:first-child {border-left: 0;}
+footer {padding: 2rem 0;}
+/***********************************************
+                NAVIGATION
+***********************************************/
+
+header nav {
+    padding: 2rem 0;
+    @extend .row;
+}
+
+header nav > ul > li > a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: $col-dark-grey;
+    font-size: var(--hA);
+    letter-spacing: 0.25rem;
+    border: 1px solid $col-light-grey;
+    border-bottom: none;
+    padding: 1.0rem 2rem;
+    line-height: 1;
+    background-color: $col-white;
+}
+
+header nav > ul > li > a:hover {
+    font-weight: 700;
+    color: $col-dark-brown;
+}
+
+/***********************************************
+                CONTENT
+***********************************************/
+
+header h1 i.fa-lg {
+    display: block;
+    width: 25%;
+    float: left;
+    font-size: 7rem;
+    line-height: 12.7936rem;
+    color: $col-light-brown;
+}
+
+header h1 i.fa-lg ~ span {
+    float: right;
+    width: 75%;
+    font-size: 3.998rem;
+    padding-left: 1rem;
+    text-align: right;
+}
+
+.focal h2 {
+    font-size: var(--fH2);
+    line-height: 1.2;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+
+
+.focal .author {
+    font-size: 1rem;
+    padding: 0.2rem 2rem 2rem;
+}
+
+.content1 h3 {
+    font-size: var(--c1H3);
+    padding: 0.2rem 2rem 2rem;
+}
+
+.content1 h3 i {
+    vertical-align: middle;
+    padding-right: 2rem;
+}
+
+.content1 p {
+    font-size: 1.414rem;
+    padding: 0.5rem 2rem 2rem;
+}
+
+.content2 h3 {
+    font-size: var(--c2H3);
+    padding: 1rem 2rem 0.5rem;
+}
+
+.content2 h4 {
+    font-size: var(--c2H4);
+    padding: 1rem 2rem 0rem;
+}
+
+.content2 p {
+    font-size: var(--c2P);
+    padding: 0.5rem 2rem 1rem;
+}
+
+.content2 li {
+    padding: 0.5rem 2rem;
+    font-size: var(--c2Li);
+}
+
+/***********************************************
+                FOOTER
+***********************************************/
+
+footer h4{
+    font-size: 1.414rem;
+    padding: 0.5rem 2rem;
+    color: $col-dark-brown;
+}
+
+footer p {
+    font-size: var(--fP);
+    padding: 0.5rem 2rem;
+    @extend .colDarkGrey;
+}
+
+footer .fa-circle {
+    @extend .colDarkGrey;
+}
+footer h4[lang]{display: none;}
+footer h4[lang=de] {
+    display: block;
+}
+@import "queries";
